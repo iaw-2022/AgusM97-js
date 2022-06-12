@@ -1,10 +1,10 @@
 <template>
   <el-menu
-    class="top_menu"
+    class="top-menu"
     mode="horizontal"
-    background-color="#545c64"
+    background-color="#ed7307"
     text-color="#fff"
-    active-text-color="#ffd04b"
+    active-text-color="#fff"
   >
     <el-menu-item index="1">Processing Center</el-menu-item>
     <el-sub-menu index="2">
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style>
-.top_menu {
+.top-menu {
   border: 0cm;
 }
 .flex-grow {

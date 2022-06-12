@@ -5,7 +5,7 @@
         <HeaderMenu />
       </el-header>
       <el-container>
-        <el-aside class="header">
+        <el-aside class="aside">
           <SideMenu />
         </el-aside>
         <el-main> Welcome! You're now logged in.</el-main>
@@ -46,10 +46,13 @@ export default {
 
 <style>
 .header {
-  padding: 0%;
-  margin: 0%;
+  padding-left: 0%;
+  padding-right: 0%;
   border-width: 0px;
   height: 100%;
   border: 0cm;
+}
+.aside {
+  padding-top: 3%;
 }
 </style>

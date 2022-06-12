@@ -1,10 +1,10 @@
 <template>
   <el-menu
-    active-text-color="#ffd04b"
-    background-color="#545c64"
-    class="el-menu-vertical-demo"
+    class="side-menu"
+    active-text-color="#ed7307"
+    background-color="#fff"
     default-active="2"
-    text-color="#fff"
+    text-color="#141414"
   >
     <el-sub-menu index="1">
       <template #title>
