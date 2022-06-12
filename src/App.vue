@@ -1,17 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Login v-if="!isAuthenticated" />
+  <NavigationShell v-else />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { useAuth0 } from "@auth0/auth0-vue";
+import Login from "./components/LogIn.vue";
+import NavigationShell from "./components/NavigationShell.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Login,
+    NavigationShell,
+  },
+  data() {
+    return {
+      isAuthenticated: useAuth0().isAuthenticated,
+    };
+  },
+};
 </script>
 
 <style>
@@ -21,6 +29,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+body {
+  margin: 0%;
 }
 </style>
