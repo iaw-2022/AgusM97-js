@@ -6,21 +6,16 @@
     text-color="#fff"
     active-text-color="#fff"
   >
-    <el-menu-item index="1">Processing Center</el-menu-item>
-    <el-sub-menu index="2">
-      <template #title>Workspace</template>
-      <el-menu-item index="2-1">item one</el-menu-item>
-      <el-menu-item index="2-2">item two</el-menu-item>
-      <el-menu-item index="2-3">item three</el-menu-item>
-      <el-sub-menu index="2-4">
-        <template #title>item four</template>
-        <el-menu-item index="2-4-1">item one</el-menu-item>
-        <el-menu-item index="2-4-2">item two</el-menu-item>
-        <el-menu-item index="2-4-3">item three</el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="3" disabled>Info</el-menu-item>
-    <el-menu-item index="4">Orders</el-menu-item>
+    <el-menu-item index="1">
+      <router-link to="/">Home</router-link>
+    </el-menu-item>
+    <el-menu-item index="2">Galleries</el-menu-item>
+    <el-menu-item index="3">
+      <router-link to="/about">About</router-link>
+    </el-menu-item>
+    <el-menu-item index="4">
+      <router-link to="/images">Images</router-link>
+    </el-menu-item>
     <div class="flex-grow"></div>
     <el-menu-item index="5" @click="logout">Log out</el-menu-item>
   </el-menu>
@@ -53,5 +48,9 @@ export default {
 }
 .flex-grow {
   flex-grow: 0.9;
+}
+
+a {
+  text-decoration: none;
 }
 </style>

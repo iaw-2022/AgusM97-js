@@ -8,7 +8,14 @@
         <el-aside class="aside">
           <SideMenu />
         </el-aside>
-        <el-main> Welcome! You're now logged in.</el-main>
+        <el-main>
+          <Suspense>
+            <template #default>
+              <router-view />
+            </template>
+            <template #fallback> Loading... </template>
+          </Suspense>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -37,7 +44,7 @@ export default {
         console.log(token);
       },
       currentUser() {
-        return user;
+        return user.value;
       },
     };
   },

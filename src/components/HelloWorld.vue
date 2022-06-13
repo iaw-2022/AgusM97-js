@@ -2,8 +2,6 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
 
-    <button v-if="!isAuthenticated" @click="login">Log in</button>
-    <button v-else @click="logout">Log out</button>
     <button @click="showToken">Show token</button>
   </div>
 </template>
