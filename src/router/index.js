@@ -28,6 +28,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "image" */ "../views/ImageView.vue"),
   },
+  {
+    path: "/user/:username",
+    name: "user",
+    component: () =>
+      import(/* webpackChunkName: "user" */ "../views/ProfileView.vue"),
+  },
 ];
 
 const router = createRouter({

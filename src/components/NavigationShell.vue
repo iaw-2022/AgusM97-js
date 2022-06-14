@@ -6,7 +6,7 @@
       </el-header>
       <el-container>
         <el-aside class="aside">
-          <el-row> {{ currentUser.email }}</el-row>
+          <el-row>{{ currentUser.email }}</el-row>
           <SideMenu />
         </el-aside>
         <el-main>
