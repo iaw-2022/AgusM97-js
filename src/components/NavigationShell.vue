@@ -6,6 +6,7 @@
       </el-header>
       <el-container>
         <el-aside class="aside">
+          <el-row> {{ currentUser.email }}</el-row>
           <SideMenu />
         </el-aside>
         <el-main>
@@ -34,6 +35,7 @@ export default {
   },
   setup() {
     const { logout, getAccessTokenSilently, user } = useAuth0();
+    const currentUser = user.value;
 
     return {
       logout: () => {
@@ -43,9 +45,7 @@ export default {
         const token = await getAccessTokenSilently();
         console.log(token);
       },
-      currentUser() {
-        return user.value;
-      },
+      currentUser,
     };
   },
 };
