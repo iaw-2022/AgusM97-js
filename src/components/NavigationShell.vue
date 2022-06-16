@@ -5,10 +5,13 @@
         <HeaderMenu />
       </el-header>
       <el-container>
-        <el-aside class="aside">
-          <el-row>{{ currentUser.email }}</el-row>
-          <SideMenu />
-        </el-aside>
+        <Suspense>
+          <template #default>
+            <el-aside class="aside">
+              <SideMenu />
+            </el-aside>
+          </template>
+        </Suspense>
         <el-main>
           <Suspense>
             <template #default>
@@ -26,6 +29,7 @@
 import { useAuth0 } from "@auth0/auth0-vue";
 import HeaderMenu from "./HeaderMenu.vue";
 import SideMenu from "./SideMenu.vue";
+import { ArrowRight } from "@element-plus/icons-vue";
 
 export default {
   name: "NavigationShell",
@@ -46,6 +50,7 @@ export default {
         console.log(token);
       },
       currentUser,
+      ArrowRight,
     };
   },
 };

@@ -20,7 +20,7 @@ const routes = [
     path: "/images",
     name: "images",
     component: () =>
-      import(/* webpackChunkName: "images" */ "../views/ImagesListView.vue"),
+      import(/* webpackChunkName: "images" */ "../views/AllImagesView.vue"),
   },
   {
     path: "/image/:id",
@@ -33,6 +33,48 @@ const routes = [
     name: "user",
     component: () =>
       import(/* webpackChunkName: "user" */ "../views/ProfileView.vue"),
+  },
+  {
+    path: "/user/:username/images",
+    name: "userImages",
+    component: () =>
+      import(
+        /* webpackChunkName: "userImages" */ "../views/UserImagesView.vue"
+      ),
+  },
+  {
+    path: "/user/:username/galleries",
+    name: "userGalleries",
+    component: () =>
+      import(
+        /* webpackChunkName: "userGalleries" */ "../views/UserGalleriesView.vue"
+      ),
+  },
+  {
+    path: "/galleries",
+    name: "galleries",
+    component: () =>
+      import(
+        /* webpackChunkName: "galleries" */ "../views/AllGalleriesView.vue"
+      ),
+  },
+  {
+    path: "/gallery/:id",
+    name: "gallery",
+    component: () =>
+      import(/* webpackChunkName: "gallery" */ "../views/GalleryView.vue"),
+  },
+  {
+    path: "/tags",
+    name: "tags",
+    component: () =>
+      import(/* webpackChunkName: "tags" */ "../views/AllTagsView.vue"),
+  },
+  {
+    path: "/tag/:id/images",
+    name: "tagImages",
+    component: () =>
+      import(/* webpackChunkName: "tagImages" */ "../views/TagImagesView.vue"),
   },
 ];
 

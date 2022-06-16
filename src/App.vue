@@ -29,7 +29,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-
+.el-breadcrumb {
+  margin-bottom: 20px;
+}
 body {
   margin: 0%;
 }

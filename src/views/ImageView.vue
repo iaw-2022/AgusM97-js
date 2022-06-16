@@ -7,7 +7,7 @@
     />
   </el-col>
   <el-col class="info">
-    <el-row><label>Uploaded By</label></el-row>
+    <el-row><MyLabel msg="Uploaded By" /></el-row>
     <el-row>
       <router-link :to="`/user/${user.username}`">
         <span>
@@ -20,29 +20,40 @@
         </span>
       </router-link>
     </el-row>
-    <el-row><label>Date</label></el-row>
+    <el-row><MyLabel msg="Date" /></el-row>
     <el-row>
       <span>{{ formatedDate }}</span>
     </el-row>
     <div v-if="image.description">
-      <el-row><label>Description</label></el-row>
+      <el-row><MyLabel msg="Description" /></el-row>
       <el-row>
         <span>{{ image.description }}</span>
       </el-row>
     </div>
-    <el-row><label>Tags</label></el-row>
+    <el-row><MyLabel msg="Tags" /></el-row>
     <el-row>
-      <el-tag class="tag" v-for="tag in tags" :key="tag.id">
-        {{ tag.name }}
-      </el-tag>
+      <router-link
+        class="tag"
+        v-for="tag in tags"
+        :key="tag.id"
+        :to="`/tag/${tag.id}/images`"
+      >
+        <el-tag>
+          {{ tag.name }}
+        </el-tag>
+      </router-link>
     </el-row>
   </el-col>
 </template>
 
 <script>
 import { useRoute } from "vue-router";
+import MyLabel from "@/components/MyLabel.vue";
 export default {
   name: "ImageView",
+  components: {
+    MyLabel,
+  },
 
   async setup() {
     const route = useRoute();
@@ -79,11 +90,6 @@ export default {
 </script>
 
 <style scoped>
-label {
-  color: #8b8b8b;
-  margin-bottom: 10px;
-  margin-top: 30px;
-}
 .tag {
   margin-right: 7px;
   margin-bottom: 7px;

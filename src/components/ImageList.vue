@@ -1,10 +1,6 @@
 <template>
-  <el-row>
-    <div
-      class="image-container"
-      v-for="image in imageList"
-      v-bind:key="image.id"
-    >
+  <el-row class="image-list">
+    <div class="image-container" v-for="image in images" v-bind:key="image.id">
       <router-link :to="`/image/${image.id}`">
         <img
           class="thumbnail"
@@ -19,22 +15,15 @@
 
 <script>
 export default {
-  name: "ImagesListView",
-
-  async setup() {
-    const response = await fetch(
-      "https://proyecto-api-agusm97.herokuapp.com/images"
-    );
-    const imageList = await response.json();
-
-    return {
-      imageList,
-    };
-  },
+  name: "ImagesList",
+  props: ["images"],
 };
 </script>
 
 <style scoped>
+.image-list {
+  margin-top: 35px;
+}
 .image-container {
   width: 190px;
   height: 190px;
