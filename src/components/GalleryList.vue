@@ -1,4 +1,5 @@
 <template>
+  <el-divider />
   <MyLabel v-if="isEmpty" msg="No results" />
   <el-row v-for="gallery in galleries" v-bind:key="gallery.id">
     <router-link :to="`/gallery/${gallery.id}`">
@@ -7,7 +8,7 @@
         <MyLabel :msg="`Created ${formatedDate(gallery.created_at)}`" />
       </div>
     </router-link>
-    <el-divider />
+    <el-divider border-style="dashed" />
   </el-row>
 </template>
 

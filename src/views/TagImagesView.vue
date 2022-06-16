@@ -1,4 +1,5 @@
 <template>
+  <BackButton />
   <h2>Images taged with "{{ tag.name }}"</h2>
   <ImageList :images="imageList" />
 </template>
@@ -6,11 +7,13 @@
 <script>
 import ImageList from "@/components/ImageList.vue";
 import { useRoute } from "vue-router";
+import BackButton from "@/components/BackButton.vue";
 
 export default {
   name: "AllImagesView",
   components: {
     ImageList,
+    BackButton,
   },
   async setup() {
     const route = useRoute();

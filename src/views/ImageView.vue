@@ -1,4 +1,5 @@
 <template>
+  <BackButton />
   <el-col>
     <img
       class="image"
@@ -49,10 +50,12 @@
 <script>
 import { useRoute } from "vue-router";
 import MyLabel from "@/components/MyLabel.vue";
+import BackButton from "@/components/BackButton.vue";
 export default {
   name: "ImageView",
   components: {
     MyLabel,
+    BackButton,
   },
 
   async setup() {

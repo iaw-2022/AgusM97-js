@@ -1,4 +1,5 @@
 <template>
+  <BackButton />
   <h2>{{ gallery.name }}</h2>
   <MyLabel :msg="`Gallery by ${user.username}`" />
   <ImageList :images="imageList" />
@@ -8,12 +9,14 @@
 import ImageList from "@/components/ImageList.vue";
 import { useRoute } from "vue-router";
 import MyLabel from "@/components/MyLabel.vue";
+import BackButton from "@/components/BackButton.vue";
 
 export default {
   name: "AllImagesView",
   components: {
     ImageList,
     MyLabel,
+    BackButton,
   },
   async setup() {
     const route = useRoute();

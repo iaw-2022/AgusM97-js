@@ -1,4 +1,5 @@
 <template>
+  <el-divider />
   <MyLabel v-if="isEmpty" msg="No results" />
   <el-row class="image-list">
     <div class="image-container" v-for="image in images" v-bind:key="image.id">
