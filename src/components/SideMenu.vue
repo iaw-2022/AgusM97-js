@@ -55,6 +55,7 @@ export default {
     return {
       logout: () => {
         logout({ returnTo: window.location.origin });
+        router.push("/");
       },
       currentUser,
       goToMyProfile,

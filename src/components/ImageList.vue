@@ -1,4 +1,5 @@
 <template>
+  <MyLabel v-if="isEmpty" msg="No results" />
   <el-row class="image-list">
     <div class="image-container" v-for="image in images" v-bind:key="image.id">
       <router-link :to="`/image/${image.id}`">
@@ -14,9 +15,18 @@
 </template>
 
 <script>
+import MyLabel from "./MyLabel.vue";
 export default {
   name: "ImagesList",
   props: ["images"],
+  components: {
+    MyLabel,
+  },
+  setup(props) {
+    return {
+      isEmpty: Object.keys(props.images).length === 0,
+    };
+  },
 };
 </script>
 

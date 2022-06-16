@@ -1,17 +1,14 @@
 <template>
-  <Login v-if="!isAuthenticated" />
-  <NavigationShell v-else />
+  <NavigationShell />
 </template>
 
 <script>
 import { useAuth0 } from "@auth0/auth0-vue";
-import Login from "./components/LogIn.vue";
 import NavigationShell from "./components/NavigationShell.vue";
 
 export default {
   name: "App",
   components: {
-    Login,
     NavigationShell,
   },
   data() {

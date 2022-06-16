@@ -1,4 +1,5 @@
 <template>
+  <MyLabel v-if="isEmpty" msg="No results" />
   <el-row v-for="gallery in galleries" v-bind:key="gallery.id">
     <router-link :to="`/gallery/${gallery.id}`">
       <div class="gallery-container">
@@ -18,7 +19,7 @@ export default {
   components: {
     MyLabel,
   },
-  async setup() {
+  async setup(props) {
     function formatedDate(timestamp) {
       const date = new Date(timestamp);
       return date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
@@ -26,6 +27,7 @@ export default {
 
     return {
       formatedDate,
+      isEmpty: Object.keys(props.galleries).length === 0,
     };
   },
 };

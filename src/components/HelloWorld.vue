@@ -1,40 +1,14 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-
-    <button @click="showToken">Show token</button>
   </div>
 </template>
 
 <script>
-import { useAuth0 } from "@auth0/auth0-vue";
 export default {
   name: "HelloWorld",
   props: {
     msg: String,
-  },
-  data() {
-    return {
-      isAuthenticated: useAuth0().isAuthenticated,
-    };
-  },
-  setup() {
-    const { loginWithRedirect } = useAuth0();
-    const { logout } = useAuth0();
-    const { getAccessTokenSilently } = useAuth0();
-
-    return {
-      login: () => {
-        loginWithRedirect();
-      },
-      logout: () => {
-        logout({ returnTo: window.location.origin });
-      },
-      showToken: async () => {
-        const token = await getAccessTokenSilently();
-        console.log(token);
-      },
-    };
   },
 };
 </script>

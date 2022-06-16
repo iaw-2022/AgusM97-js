@@ -1,5 +1,16 @@
 <template>
-  <el-button type="primary" @click="login">Log in</el-button>
+  <el-menu
+    class="side-menu"
+    active-text-color="#ed7307"
+    background-color="#fff"
+    default-active="2"
+    text-color="#141414"
+  >
+    <el-menu-item index="1" @click="login">
+      <el-icon><Avatar /></el-icon>
+      <span>Log in</span>
+    </el-menu-item>
+  </el-menu>
 </template>
 
 <script>

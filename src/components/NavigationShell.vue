@@ -5,7 +5,10 @@
         <HeaderMenu />
       </el-header>
       <el-container>
-        <Suspense v-if="isEmailPresent">
+        <el-aside v-if="!isAuthenticated" class="aside">
+          <LogIn />
+        </el-aside>
+        <Suspense v-else-if="isEmailPresent">
           <template #default>
             <el-aside class="aside">
               <SideMenu />
@@ -31,6 +34,7 @@ import { useAuth0 } from "@auth0/auth0-vue";
 import { computed } from "@vue/reactivity";
 import { defineAsyncComponent } from "vue";
 import HeaderMenu from "./HeaderMenu.vue";
+import LogIn from "./LogIn.vue";
 const SideMenu = defineAsyncComponent(() => import("./SideMenu.vue"));
 
 export default {
@@ -38,6 +42,7 @@ export default {
   components: {
     HeaderMenu,
     SideMenu,
+    LogIn,
   },
   setup() {
     const { logout, getAccessTokenSilently, user } = useAuth0();
@@ -52,6 +57,7 @@ export default {
         console.log(token);
       },
       isEmailPresent,
+      isAuthenticated: useAuth0().isAuthenticated,
     };
   },
 };
