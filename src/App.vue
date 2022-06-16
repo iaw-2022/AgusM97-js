@@ -35,4 +35,7 @@ export default {
 body {
   margin: 0%;
 }
+h2 {
+  color: #ed7307;
+}
 </style>

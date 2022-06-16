@@ -1,18 +1,16 @@
 <template>
-  <MyLabel :msg="`Galleries by ${username}`" />
+  <h2>Galleries by {{ username }}</h2>
   <GalleryList :galleries="galleryList" />
 </template>
 
 <script>
 import GalleryList from "@/components/GalleryList.vue";
-import MyLabel from "@/components/MyLabel.vue";
 import { useRoute } from "vue-router";
 
 export default {
   name: "AllImagesView",
   components: {
     GalleryList,
-    MyLabel,
   },
   async setup() {
     const route = useRoute();

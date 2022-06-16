@@ -12,7 +12,7 @@
   <el-row>
     <MyLabel :msg="`Joined ${formatedDate}`" />
   </el-row>
-  <el-row gutter="10">
+  <el-row>
     <router-link class="button" :to="`/user/${user.username}/images`">
       <el-button color="#ed7307" plain round>Images</el-button>
     </router-link>
@@ -20,7 +20,7 @@
       <el-button color="#ed7307" plain round>Galleries</el-button>
     </router-link>
   </el-row>
-  <el-row>
+  <el-row v-if="user.bio">
     <MyLabel msg="Bio" />
   </el-row>
   <el-row>
@@ -62,11 +62,6 @@ export default {
 .el-row {
   justify-content: center;
 }
-.profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .button {
   margin: 10px;
 }
@@ -74,6 +69,7 @@ export default {
   height: 200px;
   border-radius: 100%;
   vertical-align: middle;
+  margin-top: 45px;
 }
 .bio {
   text-align: center;

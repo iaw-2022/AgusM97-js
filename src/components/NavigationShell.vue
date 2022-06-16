@@ -5,12 +5,13 @@
         <HeaderMenu />
       </el-header>
       <el-container>
-        <Suspense>
+        <Suspense v-if="isEmailPresent">
           <template #default>
             <el-aside class="aside">
               <SideMenu />
             </el-aside>
           </template>
+          <template #fallback> Loading... </template>
         </Suspense>
         <el-main>
           <Suspense>
@@ -27,9 +28,10 @@
 
 <script>
 import { useAuth0 } from "@auth0/auth0-vue";
+import { computed } from "@vue/reactivity";
+import { defineAsyncComponent } from "vue";
 import HeaderMenu from "./HeaderMenu.vue";
-import SideMenu from "./SideMenu.vue";
-import { ArrowRight } from "@element-plus/icons-vue";
+const SideMenu = defineAsyncComponent(() => import("./SideMenu.vue"));
 
 export default {
   name: "NavigationShell",
@@ -39,7 +41,7 @@ export default {
   },
   setup() {
     const { logout, getAccessTokenSilently, user } = useAuth0();
-    const currentUser = user.value;
+    const isEmailPresent = computed(() => user.value.email !== "undefined");
 
     return {
       logout: () => {
@@ -49,8 +51,7 @@ export default {
         const token = await getAccessTokenSilently();
         console.log(token);
       },
-      currentUser,
-      ArrowRight,
+      isEmailPresent,
     };
   },
 };

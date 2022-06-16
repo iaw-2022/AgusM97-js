@@ -6,6 +6,10 @@
     default-active="2"
     text-color="#141414"
   >
+    <el-menu-item index="4" @click="goToMyProfile">
+      <el-icon><User /></el-icon>
+      <span>My Profile</span>
+    </el-menu-item>
     <el-menu-item index="1" @click="goToMyImages()">
       <el-icon><Picture /></el-icon>
       <span> My Images </span>
@@ -29,12 +33,16 @@ export default {
   async setup() {
     const { logout, user } = useAuth0();
     const router = useRouter();
-    const userValue = user.value;
 
     const responseUser = await fetch(
-      "https://proyecto-api-agusm97.herokuapp.com/user/email/" + userValue.email
+      "https://proyecto-api-agusm97.herokuapp.com/user/email/" +
+        user.value.email
     );
     const currentUser = await responseUser.json();
+
+    function goToMyProfile() {
+      router.push("/user/" + currentUser.username);
+    }
 
     function goToMyImages() {
       router.push("/user/" + currentUser.username + "/images");
@@ -49,6 +57,7 @@ export default {
         logout({ returnTo: window.location.origin });
       },
       currentUser,
+      goToMyProfile,
       goToMyImages,
       goToMyGalleries,
     };
