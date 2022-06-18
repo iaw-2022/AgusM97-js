@@ -1,5 +1,6 @@
 <template>
   <h2>All Tags</h2>
+  <el-divider />
   <el-row class="tag-list">
     <router-link
       class="tag"

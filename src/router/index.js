@@ -76,6 +76,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "tagImages" */ "../views/TagImagesView.vue"),
   },
+  {
+    path: "/upload",
+    name: "upload",
+    component: () =>
+      import(/* webpackChunkName: "upload" */ "../views/UploadImageView.vue"),
+  },
 ];
 
 const router = createRouter({

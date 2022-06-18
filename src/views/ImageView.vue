@@ -8,6 +8,11 @@
     />
   </el-col>
   <el-col class="info">
+    <el-row>
+      <Suspense>
+        <DeleteImageButton :user="user" :image="image" />
+      </Suspense>
+    </el-row>
     <el-row><MyLabel msg="Uploaded By" /></el-row>
     <el-row>
       <router-link :to="`/user/${user.username}`">
@@ -49,13 +54,19 @@
 
 <script>
 import { useRoute } from "vue-router";
+import { defineAsyncComponent } from "vue";
 import MyLabel from "@/components/MyLabel.vue";
 import BackButton from "@/components/BackButton.vue";
+const DeleteImageButton = defineAsyncComponent(() =>
+  import("../components/DeleteImageButton.vue")
+);
+
 export default {
   name: "ImageView",
   components: {
     MyLabel,
     BackButton,
+    DeleteImageButton,
   },
 
   async setup() {

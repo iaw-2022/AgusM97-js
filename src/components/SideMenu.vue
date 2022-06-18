@@ -3,18 +3,23 @@
     class="side-menu"
     active-text-color="#ed7307"
     background-color="#fff"
-    default-active="2"
     text-color="#141414"
   >
+    <el-menu-item index="5">
+      <el-button color="#ed7307" plain round @click="goToUpload">
+        <el-icon><Plus /></el-icon>
+        <span>Upload New Image</span>
+      </el-button>
+    </el-menu-item>
     <el-menu-item index="4" @click="goToMyProfile">
       <el-icon><User /></el-icon>
       <span>My Profile</span>
     </el-menu-item>
-    <el-menu-item index="1" @click="goToMyImages()">
+    <el-menu-item index="1" @click="goToMyImages">
       <el-icon><Picture /></el-icon>
       <span> My Images </span>
     </el-menu-item>
-    <el-menu-item index="2" @click="goToMyGalleries()">
+    <el-menu-item index="2" @click="goToMyGalleries">
       <el-icon><Collection /></el-icon>
       <span>My Galleries</span>
     </el-menu-item>
@@ -51,6 +56,9 @@ export default {
     function goToMyGalleries() {
       router.push("/user/" + currentUser.username + "/galleries");
     }
+    function goToUpload() {
+      router.push("/upload");
+    }
 
     return {
       logout: () => {
@@ -61,6 +69,7 @@ export default {
       goToMyProfile,
       goToMyImages,
       goToMyGalleries,
+      goToUpload,
     };
   },
 };
