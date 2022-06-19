@@ -37,18 +37,9 @@
       </el-row>
     </div>
     <el-row><MyLabel msg="Tags" /></el-row>
-    <el-row>
-      <router-link
-        class="tag"
-        v-for="tag in tags"
-        :key="tag.id"
-        :to="`/tag/${tag.id}/images`"
-      >
-        <el-tag>
-          {{ tag.name }}
-        </el-tag>
-      </router-link>
-    </el-row>
+    <Suspense>
+      <ImageTagList :user="user" :image="image" />
+    </Suspense>
   </el-col>
 </template>
 
@@ -60,6 +51,9 @@ import BackButton from "@/components/BackButton.vue";
 const DeleteImageButton = defineAsyncComponent(() =>
   import("../components/DeleteImageButton.vue")
 );
+const ImageTagList = defineAsyncComponent(() =>
+  import("../components/ImageTagList.vue")
+);
 
 export default {
   name: "ImageView",
@@ -67,6 +61,7 @@ export default {
     MyLabel,
     BackButton,
     DeleteImageButton,
+    ImageTagList,
   },
 
   async setup() {
@@ -76,13 +71,6 @@ export default {
       "https://proyecto-api-agusm97.herokuapp.com/image/" + route.params.id
     );
     const image = await responseImage.json();
-
-    const responseTags = await fetch(
-      "https://proyecto-api-agusm97.herokuapp.com/image/" +
-        route.params.id +
-        "/tags"
-    );
-    const tags = await responseTags.json();
 
     const responseUser = await fetch(
       "https://proyecto-api-agusm97.herokuapp.com/user/id/" + image.user_id
@@ -96,7 +84,6 @@ export default {
     return {
       image,
       user,
-      tags,
       formatedDate,
     };
   },
@@ -104,10 +91,6 @@ export default {
 </script>
 
 <style scoped>
-.tag {
-  margin-right: 7px;
-  margin-bottom: 7px;
-}
 .image-container {
   border: 1px solid lightgray;
   border-radius: 10px;
@@ -117,8 +100,8 @@ export default {
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 15px;
-  max-width: 650px;
-  max-height: 650px;
+  max-width: 850px;
+  max-height: 750px;
   margin: 25px;
 }
 .info {

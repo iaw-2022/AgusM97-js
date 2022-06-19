@@ -17,10 +17,11 @@
 <script>
 import { useAuth0 } from "@auth0/auth0-vue";
 import { useRouter } from "vue-router";
+import { ref } from "vue";
 export default {
   props: ["user", "image"],
   setup(props) {
-    const ownerBrowsing = props.user.email == useAuth0().user.value.email;
+    const ownerBrowsing = ref(props.user.email == useAuth0().user.value.email);
     const router = useRouter();
     const { getAccessTokenSilently } = useAuth0();
 
