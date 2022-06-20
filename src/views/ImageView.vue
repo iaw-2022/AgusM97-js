@@ -78,8 +78,9 @@ export default {
     const user = await responseUser.json();
 
     const date = new Date(image.created_at);
+    const month = date.getMonth() + 1;
     const formatedDate =
-      date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+      date.getDate() + "/" + month + "/" + date.getFullYear();
 
     return {
       image,

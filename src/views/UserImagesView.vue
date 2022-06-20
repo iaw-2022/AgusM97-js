@@ -7,6 +7,7 @@
 <script>
 import ImageList from "@/components/ImageList.vue";
 import { useRoute } from "vue-router";
+import { ref } from "vue";
 import BackButton from "@/components/BackButton.vue";
 
 export default {
@@ -23,7 +24,8 @@ export default {
         route.params.username +
         "/images"
     );
-    const imageList = await responseImages.json();
+    const imageListAux = await responseImages.json();
+    const imageList = ref(imageListAux);
 
     const username = route.params.username;
 
