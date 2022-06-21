@@ -70,9 +70,11 @@ export default {
 }
 .profile-picture {
   height: 200px;
+  width: 200px;
   border-radius: 100%;
   vertical-align: middle;
   margin-top: 45px;
+  object-fit: cover;
 }
 .bio {
   text-align: center;

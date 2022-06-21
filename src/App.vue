@@ -5,7 +5,10 @@
 
 <script>
 import { useAuth0 } from "@auth0/auth0-vue";
-import NavigationShell from "./components/NavigationShell.vue";
+import { defineAsyncComponent } from "vue";
+const NavigationShell = defineAsyncComponent(() =>
+  import("./components/NavigationShell.vue")
+);
 import LogIn from "./components/LogIn.vue";
 
 export default {

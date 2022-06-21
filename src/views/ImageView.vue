@@ -112,8 +112,10 @@ export default {
 }
 .profile-picture {
   height: 40px;
+  width: 40px;
   border-radius: 80%;
   margin-right: 10px;
   vertical-align: middle;
+  object-fit: cover;
 }
 </style>

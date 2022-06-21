@@ -1,7 +1,9 @@
 <template>
-  <el-button>
-    <el-icon><Avatar /></el-icon>Log in
-  </el-button>
+  <div>
+    <el-button class="button" size="large" icon="Avatar" @click="login">
+      Log in
+    </el-button>
+  </div>
 </template>
 
 <script>
@@ -19,3 +21,18 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  background-color: #ed7307;
+}
+.button {
+  margin: auto;
+  font-size: larger;
+}
+</style>
