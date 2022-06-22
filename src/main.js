@@ -10,10 +10,10 @@ const app = createApp(App).use(router);
 
 app.use(
   createAuth0({
-    domain: process.env.DOMAIN,
-    client_id: process.env.CLIENT_ID,
-    redirect_uri: process.env.REDIRECT_URI,
-    audience: process.env.AUDIENCE,
+    domain: "dev-0f-5co-0.us.auth0.com",
+    client_id: "yJyGr32ely63D7pigU7bSI5h9GClY0fW",
+    redirect_uri: window.location.origin,
+    audience: "https://proyecto-IAW/api",
   })
 );
 app.use(ElementPlus);
